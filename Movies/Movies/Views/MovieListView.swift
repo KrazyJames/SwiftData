@@ -10,18 +10,24 @@ import SwiftData
 
 struct MovieListView: View {
     @Environment(\.modelContext) private var modelContext
+    @Binding var path: NavigationPath
     let movies: [Movie]
 
     var body: some View {
         List {
             ForEach(movies) { movie in
-                HStack {
-                    Text(movie.title)
-                    Spacer()
-                    Text(movie.year.description)
+                NavigationLink(value: movie) {
+                    HStack {
+                        Text(movie.title)
+                        Spacer()
+                        Text(movie.year.description)
+                    }
                 }
             }
             .onDelete(perform: delete)
+        }
+        .navigationDestination(for: Movie.self) { movie in
+            MovieDetailsView(movie: movie, path: $path)
         }
     }
 
@@ -40,7 +46,7 @@ struct MovieListView: View {
 
 #Preview {
     NavigationStack {
-        MovieListView(movies: .init())
+        MovieListView(path: .constant(.init()), movies: .init())
             .modelContainer(
                 for: [Movie.self],
                 inMemory: true

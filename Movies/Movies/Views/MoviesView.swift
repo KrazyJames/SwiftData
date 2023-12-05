@@ -11,9 +11,10 @@ import SwiftData
 struct MoviesView: View {
     @Query(sort: \Movie.title) private var movies: [Movie]
     @State private var isAddMoviePresented = false
+    @Binding var path: NavigationPath
 
     var body: some View {
-        MovieListView(movies: movies)
+        MovieListView(path: $path, movies: movies)
         .navigationTitle("Movies")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
@@ -32,7 +33,7 @@ struct MoviesView: View {
 
 #Preview {
     NavigationStack {
-        MoviesView()
+        MoviesView(path: .constant(.init()))
             .modelContainer(
                 for: [Movie.self],
                 inMemory: true

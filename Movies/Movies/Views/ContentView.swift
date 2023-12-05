@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var path: NavigationPath = .init()
     var body: some View {
-        NavigationStack {
-            MoviesView()
+        NavigationStack(path: $path) {
+            MoviesView(path: $path)
         }
     }
 }
