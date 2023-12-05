@@ -49,6 +49,7 @@ struct AddMovieView: View {
         } catch {
             debugPrint(error.localizedDescription)
         }
+        dismiss()
     }
 }
 
