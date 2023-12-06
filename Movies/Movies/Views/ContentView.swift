@@ -19,7 +19,7 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .modelContainer(
-            for: [Movie.self],
+            for: [Movie.self, Review.self],
             inMemory: true
         )
 }

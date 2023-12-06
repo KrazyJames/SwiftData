@@ -14,6 +14,6 @@ struct MoviesApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: [Movie.self])
+        .modelContainer(for: [Movie.self, Review.self])
     }
 }
