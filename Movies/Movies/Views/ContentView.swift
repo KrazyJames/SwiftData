@@ -8,10 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var path: NavigationPath = .init()
+    @State private var moviesPath: NavigationPath = .init()
+    @State private var actorsPath: NavigationPath = .init()
     var body: some View {
-        NavigationStack(path: $path) {
-            MoviesView(path: $path)
+        TabView {
+            NavigationStack(path: $moviesPath) {
+                MoviesView(path: $moviesPath)
+            }
+            .tabItem {
+                Label("Movies", systemImage: "film")
+            }
+            NavigationStack(path: $actorsPath) {
+                ActorsListView()
+            }
+            .tabItem {
+                Label("Actors", systemImage: "person.2")
+            }
         }
     }
 }
@@ -19,7 +31,7 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .modelContainer(
-            for: [Movie.self, Review.self],
+            for: [Movie.self, Review.self, Actor.self],
             inMemory: true
         )
 }

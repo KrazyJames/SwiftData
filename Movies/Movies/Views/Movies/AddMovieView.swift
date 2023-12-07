@@ -14,9 +14,10 @@ struct AddMovieView: View {
 
     @State private var title: String = .init()
     @State private var year: Int?
+    @State private var selectedActors: Set<Actor> = .init()
 
     private var isValid: Bool {
-        !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && year != nil
+        !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && year != nil && !selectedActors.isEmpty
     }
 
     var body: some View {
@@ -24,6 +25,9 @@ struct AddMovieView: View {
             TextField("Title", text: $title)
             TextField("Year", value: $year, format: .number)
                 .keyboardType(.numberPad)
+            Section("Select actors") {
+                ActorSelectionView(selectedActors: $selectedActors)
+            }
         }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
@@ -43,6 +47,10 @@ struct AddMovieView: View {
     private func save() {
         guard let year, !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
         let newMovie = Movie(title: title, year: year)
+        newMovie.actors = Array(selectedActors)
+        selectedActors.forEach { actor in
+            actor.movies.append(newMovie)
+        }
         modelContext.insert(newMovie)
         do {
             try modelContext.save()

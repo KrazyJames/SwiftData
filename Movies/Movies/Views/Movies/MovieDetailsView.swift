@@ -19,6 +19,12 @@ struct MovieDetailsView: View {
             TextField("Year", value: $movie.year, format: .number)
                 .keyboardType(.numberPad)
 
+            Section("Actors") {
+                List(movie.actors) { actor in
+                    ReviewRowView(subject: actor.name, content: actor.movies.map(\.title).formatted(.list(type: .and)))
+                }
+            }
+
             Section("Reviews") {
                 Button("Add review") {
                     showAddReviewView.toggle()

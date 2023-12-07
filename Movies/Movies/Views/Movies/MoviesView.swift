@@ -11,6 +11,7 @@ import SwiftData
 struct MoviesView: View {
     @Query(sort: \Movie.title) private var movies: [Movie]
     @State private var isAddMoviePresented = false
+    
     @Binding var path: NavigationPath
 
     var body: some View {
@@ -35,7 +36,7 @@ struct MoviesView: View {
     NavigationStack {
         MoviesView(path: .constant(.init()))
             .modelContainer(
-                for: [Movie.self],
+                for: [Movie.self, Review.self, Actor.self],
                 inMemory: true
             )
     }
