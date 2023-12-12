@@ -42,7 +42,6 @@ struct MovieDetailsView: View {
             } catch {
                 debugPrint(error.localizedDescription)
             }
-            path.removeLast()
         }
         .sheet(isPresented: $showAddReviewView) {
             NavigationStack {
@@ -66,5 +65,8 @@ struct ReviewRowView: View {
 }
 
 #Preview {
-    ReviewRowView(subject: "Some review", content: "Bla bla bla")
+    let container = DataController.previewContainer
+    let descriptor = FetchDescriptor<Movie>.init()
+    let movie = try? container.mainContext.fetch(descriptor).first
+    return MovieDetailsView(movie: movie!, path: .constant(.init()))
 }

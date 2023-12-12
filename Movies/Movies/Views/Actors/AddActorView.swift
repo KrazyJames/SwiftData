@@ -28,6 +28,7 @@ struct AddActorView: View {
                     Button("Save") {
                         saveActor()
                     }
+                    .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
         }
@@ -42,5 +43,5 @@ struct AddActorView: View {
 
 #Preview {
     AddActorView()
-        .modelContainer(for: [Actor.self, Movie.self, Review.self], inMemory: true)
+        .modelContainer(DataController.previewContainer)
 }

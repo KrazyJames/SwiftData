@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct MovieListView: View {
-    @Environment(\.modelContext) private var modelContext
     @Binding var path: NavigationPath
     let movies: [Movie]
 
@@ -34,12 +33,7 @@ struct MovieListView: View {
     private func delete(indexSet: IndexSet) {
         indexSet.forEach { index in
             let movie = movies[index]
-            modelContext.delete(movie)
-            do {
-                try modelContext.save()
-            } catch {
-                debugPrint(error.localizedDescription)
-            }
+            movie.modelContext?.delete(movie)
         }
     }
 }
@@ -47,9 +41,6 @@ struct MovieListView: View {
 #Preview {
     NavigationStack {
         MovieListView(path: .constant(.init()), movies: .init())
-            .modelContainer(
-                for: [Movie.self],
-                inMemory: true
-            )
+            .modelContainer(DataController.previewContainer)
     }
 }

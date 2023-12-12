@@ -9,13 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct ActorDetailsView: View {
-    @Environment(\.modelContext) private var modelContext
     @Bindable var actor: Actor
     @State private var selectedMovies: Set<Movie> = .init()
 
     var body: some View {
         VStack {
-            Text(actor.name)
             MovieSelectionView(selectedMovies: $selectedMovies)
         }
         .navigationTitle(actor.name)
@@ -25,10 +23,20 @@ struct ActorDetailsView: View {
         .onChange(of: selectedMovies) { oldValue, newValue in
             actor.movies = Array(newValue)
             do {
-                try modelContext.save()
+                try actor.modelContext?.save()
             } catch {
                 debugPrint(error.localizedDescription)
             }
         }
+    }
+}
+
+#Preview {
+    let container = DataController.previewContainer
+    let descriptor = FetchDescriptor<Actor>()
+    let actor = try? container.mainContext.fetch(descriptor).first!
+    return NavigationStack {
+        ActorDetailsView(actor: actor!)
+            .modelContainer(container)
     }
 }

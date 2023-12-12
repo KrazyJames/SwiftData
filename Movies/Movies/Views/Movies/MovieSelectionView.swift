@@ -37,5 +37,11 @@ struct MovieSelectionView: View {
 }
 
 #Preview {
-    MovieSelectionView(selectedMovies: .constant(.init()))
+    let container = DataController.previewContainer
+    let descriptor = FetchDescriptor<Movie>()
+    let movie = try? container
+        .mainContext.fetch(descriptor).first!
+    let selectedMovies = Set<Movie>.init(arrayLiteral: movie!)
+    return MovieSelectionView(selectedMovies: .constant(.init(selectedMovies)))
+        .modelContainer(container)
 }

@@ -64,9 +64,6 @@ struct AddMovieView: View {
 #Preview {
     NavigationStack {
         AddMovieView()
-            .modelContainer(
-                for: [Movie.self],
-                inMemory: true
-            )
+            .modelContainer(DataController.previewContainer)
     }
 }

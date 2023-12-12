@@ -30,8 +30,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(
-            for: [Movie.self, Review.self, Actor.self],
-            inMemory: true
-        )
+        .modelContainer(DataController.previewContainer)
 }

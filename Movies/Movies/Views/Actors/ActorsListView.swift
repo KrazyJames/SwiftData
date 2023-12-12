@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct ActorsListView: View {
-    @Environment(\.modelContext) private var modelContext
     @Query(sort: \Actor.name) var actors: [Actor]
     @State private var isAddActorPresented = false
     
@@ -40,6 +39,6 @@ struct ActorsListView: View {
 #Preview {
     NavigationStack {
         ActorsListView()
-            .modelContainer(for: [Actor.self, Movie.self, Review.self], inMemory: true)
+            .modelContainer(DataController.previewContainer)
     }
 }

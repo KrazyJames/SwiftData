@@ -35,9 +35,6 @@ struct MoviesView: View {
 #Preview {
     NavigationStack {
         MoviesView(path: .constant(.init()))
-            .modelContainer(
-                for: [Movie.self, Review.self, Actor.self],
-                inMemory: true
-            )
+            .modelContainer(DataController.previewContainer)
     }
 }

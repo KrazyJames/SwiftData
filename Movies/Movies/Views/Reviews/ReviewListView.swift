@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct ReviewListView: View {
-    @Environment(\.modelContext) private var modelContext
     @Binding var reviews: [Review]
     var body: some View {
         List {
@@ -23,7 +22,8 @@ struct ReviewListView: View {
     private func deleteReviews(at indexSet: IndexSet) {
         indexSet.forEach { index in
             withAnimation {
-                modelContext.delete(reviews.remove(at: index))
+                let review = reviews.remove(at: index)
+                review.modelContext?.delete(review)
             }
         }
     }
@@ -31,5 +31,4 @@ struct ReviewListView: View {
 
 #Preview {
     ReviewListView(reviews: .constant(.init()))
-        .modelContainer(for: [Review.self], inMemory: true)
 }

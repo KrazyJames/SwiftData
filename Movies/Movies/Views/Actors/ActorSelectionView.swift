@@ -37,6 +37,11 @@ struct ActorSelectionView: View {
 }
 
 #Preview {
-    ActorSelectionView(selectedActors: .constant(.init()))
-        .modelContainer(for: [Movie.self, Actor.self, Review.self], inMemory: true)
+    let container = DataController.previewContainer
+    let descriptor = FetchDescriptor<Actor>()
+    let actor = try? container
+        .mainContext.fetch(descriptor).first!
+    var selectedActors = Set<Actor>.init(arrayLiteral: actor!)
+    return ActorSelectionView(selectedActors: .constant(selectedActors))
+        .modelContainer(container)
 }

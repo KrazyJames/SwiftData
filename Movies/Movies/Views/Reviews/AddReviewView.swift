@@ -10,7 +10,6 @@ import SwiftData
 
 struct AddReviewView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
 
     @State private var subject: String = .init()
     @State private var content: String = .init()
@@ -45,8 +44,7 @@ struct AddReviewView: View {
 
     private func saveReview() {
         let review = Review(subject: subject, content: content, movie: movie)
-        modelContext.insert(review)
-        movie?.reviews.append(review)
+        movie?.modelContext?.insert(review)
         dismiss()
     }
 }
@@ -54,6 +52,6 @@ struct AddReviewView: View {
 #Preview {
     NavigationStack {
         AddReviewView(movie: nil)
-            .modelContainer(for: [Movie.self, Review.self], inMemory: true)
+            .modelContainer(DataController.previewContainer)
     }
 }
