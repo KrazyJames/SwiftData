@@ -10,20 +10,35 @@ import SwiftData
 
 struct MovieListView: View {
     @Binding var path: NavigationPath
+    @Binding var filterOption: FilterOption
     let movies: [Movie]
+
+    private var isFiltering: Bool {
+        filterOption != .none
+    }
+    private var filteredMovies: [Movie] {
+        movies.filter(filter)
+    }
 
     var body: some View {
         List {
-            ForEach(movies) { movie in
-                NavigationLink(value: movie) {
+            Section {
+                ForEach(filteredMovies) { movie in
+                    NavigationLink(value: movie) {
+                        MovieRowView(movie: movie)
+                    }
+                }
+                .onDelete(perform: delete)
+            } header: {
+                if isFiltering {
                     HStack {
-                        Text(movie.title)
                         Spacer()
-                        Text(movie.year.description)
+                        Button("Clear filter") {
+                            filterOption = .none
+                        }
                     }
                 }
             }
-            .onDelete(perform: delete)
         }
         .navigationDestination(for: Movie.self) { movie in
             MovieDetailsView(movie: movie, path: $path)
@@ -36,11 +51,31 @@ struct MovieListView: View {
             movie.modelContext?.delete(movie)
         }
     }
+
+    private func filter(from movie: Movie) -> Bool {
+        switch filterOption {
+        case .none:
+            return true
+        case .title(let title):
+            guard !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+                return true
+            }
+            return movie.title.lowercased().contains(title.lowercased())
+        case .reviews(count: let count):
+            return movie.reviews.count >= count
+        case .actors(count: let count):
+            return movie.actors.count >= count
+        }
+    }
+
 }
 
 #Preview {
-    NavigationStack {
-        MovieListView(path: .constant(.init()), movies: .init())
-            .modelContainer(DataController.previewContainer)
+    let container = DataController.previewContainer
+    let movieDescriptor = FetchDescriptor<Movie>()
+    let movies = try! container.mainContext.fetch(movieDescriptor)
+    return NavigationStack {
+        MovieListView(path: .constant(.init()), filterOption: .constant(.actors(count: .zero)), movies: movies)
+            .modelContainer(container)
     }
 }

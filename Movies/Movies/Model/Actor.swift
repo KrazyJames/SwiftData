@@ -19,3 +19,12 @@ final class Actor {
         self.movies = movies
     }
 }
+
+extension Actor {
+    var appearsIn: String {
+        guard !movies.isEmpty else {
+            return "No movies"
+        }
+        return "Appears in \(movies.map(\.title).formatted(.list(type: .and)))"
+    }
+}

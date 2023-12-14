@@ -21,7 +21,7 @@ struct MovieDetailsView: View {
 
             Section("Actors") {
                 List(movie.actors) { actor in
-                    ReviewRowView(subject: actor.name, content: actor.movies.map(\.title).formatted(.list(type: .and)))
+                    Text(actor.name)
                 }
             }
 
@@ -51,18 +51,6 @@ struct MovieDetailsView: View {
     }
 }
 
-struct ReviewRowView: View {
-    let subject: String
-    let content: String
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(subject)
-                .font(.headline)
-            Text(content)
-                .foregroundStyle(.secondary)
-        }
-    }
-}
 
 #Preview {
     let container = DataController.previewContainer

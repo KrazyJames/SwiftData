@@ -42,6 +42,8 @@ struct AddMovieView: View {
                 .disabled(!isValid)
             }
         }
+        .navigationTitle("New movie")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func save() {
@@ -62,8 +64,12 @@ struct AddMovieView: View {
 }
 
 #Preview {
-    NavigationStack {
-        AddMovieView()
-            .modelContainer(DataController.previewContainer)
-    }
+    Text("Demo view")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                AddMovieView()
+                    .modelContainer(DataController.previewContainer)
+            }
+            .interactiveDismissDisabled()
+        }
 }

@@ -13,9 +13,7 @@ struct ActorDetailsView: View {
     @State private var selectedMovies: Set<Movie> = .init()
 
     var body: some View {
-        VStack {
-            MovieSelectionView(selectedMovies: $selectedMovies)
-        }
+        MovieSelectionView(selectedMovies: $selectedMovies)
         .navigationTitle(actor.name)
         .onAppear {
             selectedMovies = Set(actor.movies)

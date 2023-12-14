@@ -26,6 +26,7 @@ struct AddReviewView: View {
             TextField("Body", text: $content)
         }
         .navigationTitle("Add review")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Close") {
@@ -50,8 +51,12 @@ struct AddReviewView: View {
 }
 
 #Preview {
-    NavigationStack {
-        AddReviewView(movie: nil)
-            .modelContainer(DataController.previewContainer)
-    }
+    Text("Demo view")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                AddReviewView(movie: nil)
+                    .modelContainer(DataController.previewContainer)
+            }
+            .interactiveDismissDisabled()
+        }
 }

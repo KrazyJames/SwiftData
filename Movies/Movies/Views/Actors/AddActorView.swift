@@ -18,6 +18,7 @@ struct AddActorView: View {
                 TextField("Actor name", text: $name)
             }
             .navigationTitle("New actor")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
@@ -42,6 +43,12 @@ struct AddActorView: View {
 }
 
 #Preview {
-    AddActorView()
-        .modelContainer(DataController.previewContainer)
+    Text("Demo view")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                AddActorView()
+                    .modelContainer(DataController.previewContainer)
+            }
+            .interactiveDismissDisabled()
+        }
 }

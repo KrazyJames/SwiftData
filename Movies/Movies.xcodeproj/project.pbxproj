@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA6882872B2B971E00CE7977 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6882862B2B971E00CE7977 /* FilterView.swift */; };
+		AA6882892B2BA9A100CE7977 /* MovieRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6882882B2BA9A100CE7977 /* MovieRowView.swift */; };
+		AA68828B2B2BAB9500CE7977 /* ReviewRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA68828A2B2BAB9500CE7977 /* ReviewRowView.swift */; };
+		AA68828D2B2BACA100CE7977 /* ActorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA68828C2B2BACA100CE7977 /* ActorRowView.swift */; };
 		AA7079A02B1F956400EEBA1C /* MoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70799F2B1F956400EEBA1C /* MoviesApp.swift */; };
 		AA7079A22B1F956400EEBA1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7079A12B1F956400EEBA1C /* ContentView.swift */; };
 		AA7079A42B1F956600EEBA1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7079A32B1F956600EEBA1C /* Assets.xcassets */; };
@@ -28,6 +32,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA6882862B2B971E00CE7977 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		AA6882882B2BA9A100CE7977 /* MovieRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRowView.swift; sourceTree = "<group>"; };
+		AA68828A2B2BAB9500CE7977 /* ReviewRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowView.swift; sourceTree = "<group>"; };
+		AA68828C2B2BACA100CE7977 /* ActorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorRowView.swift; sourceTree = "<group>"; };
 		AA70799C2B1F956400EEBA1C /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA70799F2B1F956400EEBA1C /* MoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApp.swift; sourceTree = "<group>"; };
 		AA7079A12B1F956400EEBA1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,9 +130,12 @@
 			children = (
 				AA7079B52B1F9CDB00EEBA1C /* MoviesView.swift */,
 				AA7079B32B1F99EE00EEBA1C /* MovieListView.swift */,
+				AA6882882B2BA9A100CE7977 /* MovieRowView.swift */,
 				AA7079B12B1F977600EEBA1C /* AddMovieView.swift */,
 				AA7079B72B1F9E5D00EEBA1C /* MovieDetailsView.swift */,
+				AA68828A2B2BAB9500CE7977 /* ReviewRowView.swift */,
 				AADF6E032B22599100CA8CDB /* MovieSelectionView.swift */,
+				AA6882862B2B971E00CE7977 /* FilterView.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -133,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				AADF6DFB2B22505D00CA8CDB /* ActorsListView.swift */,
+				AA68828C2B2BACA100CE7977 /* ActorRowView.swift */,
 				AADF6DFD2B22515C00CA8CDB /* AddActorView.swift */,
 				AADF6DFF2B22536400CA8CDB /* ActorSelectionView.swift */,
 				AADF6E012B2258DC00CA8CDB /* ActorDetailsView.swift */,
@@ -219,6 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA68828B2B2BAB9500CE7977 /* ReviewRowView.swift in Sources */,
+				AA68828D2B2BACA100CE7977 /* ActorRowView.swift in Sources */,
 				AA7079A22B1F956400EEBA1C /* ContentView.swift in Sources */,
 				AA7079BA2B211B6D00EEBA1C /* Review.swift in Sources */,
 				AA7079B82B1F9E5D00EEBA1C /* MovieDetailsView.swift in Sources */,
@@ -229,6 +243,8 @@
 				AA7079BE2B2122A300EEBA1C /* ReviewListView.swift in Sources */,
 				AADF6DFC2B22505D00CA8CDB /* ActorsListView.swift in Sources */,
 				AA7079B22B1F977600EEBA1C /* AddMovieView.swift in Sources */,
+				AA6882892B2BA9A100CE7977 /* MovieRowView.swift in Sources */,
+				AA6882872B2B971E00CE7977 /* FilterView.swift in Sources */,
 				AA7079B42B1F99EE00EEBA1C /* MovieListView.swift in Sources */,
 				AADF6E002B22536400CA8CDB /* ActorSelectionView.swift in Sources */,
 				AA7079A02B1F956400EEBA1C /* MoviesApp.swift in Sources */,

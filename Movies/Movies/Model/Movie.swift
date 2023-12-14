@@ -29,3 +29,17 @@ final class Movie {
         self.actors = actors
     }
 }
+
+extension Movie {
+    var reviewsCount: String {
+        guard !reviews.isEmpty else {
+            return "No reviews"
+        }
+        let count = reviews.count
+        return if count > 1 {
+            "\(count) reviews"
+        } else {
+            "1 review"
+        }
+    }
+}

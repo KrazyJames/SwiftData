@@ -13,7 +13,7 @@ struct ReviewListView: View {
     var body: some View {
         List {
             ForEach(reviews) { review in
-                ReviewRowView(subject: review.subject, content: review.content)
+                ReviewRowView(review: review)
             }
             .onDelete(perform: deleteReviews)
         }

@@ -15,7 +15,7 @@ struct ActorsListView: View {
     var body: some View {
         List(actors) { actor in
             NavigationLink(value: actor) {
-                Text(actor.name)
+                ActorRowView(actor: actor)
             }
         }
         .navigationTitle("Actors")

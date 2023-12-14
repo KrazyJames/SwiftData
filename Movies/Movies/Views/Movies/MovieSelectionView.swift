@@ -12,13 +12,17 @@ struct MovieSelectionView: View {
     @Query(sort: \Movie.title) private var movies: [Movie]
     @Binding var selectedMovies: Set<Movie>
     var body: some View {
-        List(movies) { movie in
-            HStack {
-                Image(systemName: systemImage(for: movie))
-                Text(movie.title)
-            }
-            .onTapGesture {
-                select(movie: movie)
+        List {
+            Section("Appears in") {
+                ForEach(movies) { movie in
+                    HStack {
+                        Image(systemName: systemImage(for: movie))
+                        Text(movie.title)
+                    }
+                    .onTapGesture {
+                        select(movie: movie)
+                    }
+                }
             }
         }
     }
