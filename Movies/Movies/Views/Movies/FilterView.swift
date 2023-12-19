@@ -49,9 +49,17 @@ struct FilterView: View {
                 .disabled(actors < .zero)
             }
         }
+        .navigationTitle("Filters")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    FilterView(filterOption: .constant(.title("Spiderman")))
+    Text("Demo")
+        .sheet(isPresented: .constant(true)) {
+            NavigationStack {
+                FilterView(filterOption: .constant(.title("Spiderman")))
+            }
+            .interactiveDismissDisabled()
+        }
 }

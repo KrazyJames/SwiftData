@@ -10,11 +10,27 @@ import SwiftData
 
 @main
 struct MoviesApp: App {
+    let container: ModelContainer
+
+    init() {
+        do {
+            container = try ModelContainer(
+                for: Movie.self,
+                migrationPlan: MoviesMigrationPlan.self,
+                configurations: ModelConfiguration(
+                    for: Movie.self
+                )
+            )
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: [Movie.self, Review.self, Actor.self])
+        .modelContainer(container)
     }
 }
 
