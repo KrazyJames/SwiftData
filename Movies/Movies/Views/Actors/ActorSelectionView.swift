@@ -41,7 +41,7 @@ struct ActorSelectionView: View {
     let descriptor = FetchDescriptor<Actor>()
     let actor = try? container
         .mainContext.fetch(descriptor).first!
-    var selectedActors = Set<Actor>.init(arrayLiteral: actor!)
+    let selectedActors = Set<Actor>.init(arrayLiteral: actor!)
     return ActorSelectionView(selectedActors: .constant(selectedActors))
         .modelContainer(container)
 }

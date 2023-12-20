@@ -65,6 +65,8 @@ struct MovieListView: View {
             return movie.reviews.count >= count
         case .actors(count: let count):
             return movie.actors.count >= count
+        case .genre(let genre):
+            return movie.genre == genre
         }
     }
 
@@ -75,7 +77,7 @@ struct MovieListView: View {
     let movieDescriptor = FetchDescriptor<Movie>()
     let movies = try! container.mainContext.fetch(movieDescriptor)
     return NavigationStack {
-        MovieListView(path: .constant(.init()), filterOption: .constant(.actors(count: .zero)), movies: movies)
+        MovieListView(path: .constant(.init()), filterOption: .constant(.genre(.comedy)), movies: movies)
             .modelContainer(container)
     }
 }

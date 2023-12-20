@@ -14,6 +14,7 @@ struct AddMovieView: View {
 
     @State private var title: String = .init()
     @State private var year: Int?
+    @State private var genre: Genre = .action
     @State private var selectedActors: Set<Actor> = .init()
 
     private var isValid: Bool {
@@ -25,6 +26,11 @@ struct AddMovieView: View {
             TextField("Title", text: $title)
             TextField("Year", value: $year, format: .number)
                 .keyboardType(.numberPad)
+            Picker("Select Genre", selection: $genre) {
+                ForEach(Genre.allCases) { genre in
+                    Text(genre.description).tag(genre)
+                }
+            }
             Section("Select actors") {
                 ActorSelectionView(selectedActors: $selectedActors)
             }
@@ -48,7 +54,7 @@ struct AddMovieView: View {
 
     private func save() {
         guard let year, !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
-        let newMovie = Movie(title: title, year: year)
+        let newMovie = Movie(title: title, year: year, genre: genre)
         newMovie.actors = Array(selectedActors)
         selectedActors.forEach { actor in
             actor.movies.append(newMovie)

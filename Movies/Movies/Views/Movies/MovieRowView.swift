@@ -15,13 +15,19 @@ struct MovieRowView: View {
                 Text(movie.title)
                     .font(.headline)
                 Text(movie.year.description)
-                    .font(.callout)
+                    .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .bold()
             }
             Text(movie.reviewsCount)
-                .font(.footnote)
+                .font(.callout)
                 .foregroundStyle(.secondary)
+            Text(movie.genre.description)
+                .bold()
+                .foregroundStyle(.background)
+                .padding(.horizontal)
+                .padding(.vertical, 4)
+                .background(Color.accentColor, in: .capsule)
         }
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA02BA3D2B325574007A54A2 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02BA3C2B325574007A54A2 /* Genre.swift */; };
 		AA6882872B2B971E00CE7977 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6882862B2B971E00CE7977 /* FilterView.swift */; };
 		AA6882892B2BA9A100CE7977 /* MovieRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6882882B2BA9A100CE7977 /* MovieRowView.swift */; };
 		AA68828B2B2BAB9500CE7977 /* ReviewRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA68828A2B2BAB9500CE7977 /* ReviewRowView.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA02BA3C2B325574007A54A2 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		AA6882862B2B971E00CE7977 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		AA6882882B2BA9A100CE7977 /* MovieRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRowView.swift; sourceTree = "<group>"; };
 		AA68828A2B2BAB9500CE7977 /* ReviewRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				AA7079AE2B1F96C200EEBA1C /* Movie.swift */,
 				AA7079B92B211B6D00EEBA1C /* Review.swift */,
 				AADF6DF62B224CBC00CA8CDB /* Actor.swift */,
+				AA02BA3C2B325574007A54A2 /* Genre.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				AA7079BA2B211B6D00EEBA1C /* Review.swift in Sources */,
 				AA7079B82B1F9E5D00EEBA1C /* MovieDetailsView.swift in Sources */,
 				AADF6E022B2258DC00CA8CDB /* ActorDetailsView.swift in Sources */,
+				AA02BA3D2B325574007A54A2 /* Genre.swift in Sources */,
 				AADF6E042B22599100CA8CDB /* MovieSelectionView.swift in Sources */,
 				AA7079B62B1F9CDC00EEBA1C /* MoviesView.swift in Sources */,
 				AADF6DF72B224CBC00CA8CDB /* Actor.swift in Sources */,

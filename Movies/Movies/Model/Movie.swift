@@ -12,6 +12,8 @@ import SwiftData
 final class Movie {
     var title: String
     var year: Int
+    var genre: Genre
+
     @Relationship(deleteRule: .cascade, inverse: \Review.movie)
     var reviews: [Review]
     @Relationship(deleteRule: .nullify, inverse: \Actor.movies)
@@ -21,12 +23,14 @@ final class Movie {
         title: String,
         year: Int,
         reviews: [Review] = .init(),
-        actors: [Actor] = .init()
+        actors: [Actor] = .init(),
+        genre: Genre
     ) {
         self.title = title
         self.year = year
         self.reviews = reviews
         self.actors = actors
+        self.genre = genre
     }
 }
 

@@ -25,8 +25,8 @@ final class DataController {
             let config = ModelConfiguration(isStoredInMemoryOnly: true)
             let container = try ModelContainer(for: Movie.self, Review.self, Actor.self, configurations: config)
 
-            let movie1 = Movie(title: "Avengers Endgame", year: 2014)
-            let movie2 = Movie(title: "Deadpool 2", year: 2018)
+            let movie1 = Movie(title: "Avengers Endgame", year: 2014, genre: .fiction)
+            let movie2 = Movie(title: "Deadpool 2", year: 2018, genre: .comedy)
 
             let actor1 = Actor(name: "Tom Holland")
             let actor2 = Actor(name: "Ryan Reynolds")

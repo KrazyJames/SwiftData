@@ -12,6 +12,7 @@ enum FilterOption: Equatable {
     case title(String)
     case reviews(count: Int)
     case actors(count: Int)
+    case genre(Genre)
 }
 
 struct FilterView: View {
@@ -21,6 +22,7 @@ struct FilterView: View {
     @State private var title: String = .init()
     @State private var reviews: Int = .zero
     @State private var actors: Int = .zero
+    @State private var genre: Genre = .action
 
     var body: some View {
         Form {
@@ -47,6 +49,32 @@ struct FilterView: View {
                     dismiss()
                 }
                 .disabled(actors < .zero)
+            }
+
+            Section("Filter by genre") {
+                Picker("Select a genre", selection: $genre) {
+                    ForEach(Genre.allCases) { genre in
+                        Text(genre.description).tag(genre)
+                    }
+                }.onChange(of: genre) { oldValue, newValue in
+                    guard oldValue != newValue else { return }
+                    filterOption = .genre(newValue)
+                    dismiss()
+                }
+            }
+        }
+        .onAppear {
+            switch filterOption {
+            case .none:
+                return
+            case .title(let string):
+                self.title = string
+            case .reviews(let count):
+                self.reviews = count
+            case .actors(let count):
+                self.actors = count
+            case .genre(let genre):
+                self.genre = genre
             }
         }
     }
